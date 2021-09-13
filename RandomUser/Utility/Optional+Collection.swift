@@ -20,3 +20,12 @@ extension Optional where Wrapped: Collection {
 
 }
 
+extension Collection {
+
+    /// I get tired of typing this so much with just the `compactMap { $0 }` not sure if the generic is set up correctly
+    func compactMap<ElementOfResult>() -> [ElementOfResult] {
+        return compactMap { $0 as? ElementOfResult }
+    }
+
+}
+

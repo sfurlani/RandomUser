@@ -34,7 +34,7 @@ extension UserInteractor: UserInteractorPresenterInterface {
         // TODO Check Pagination?
         if let cache = cache {
             DispatchQueue.global().async {
-                completion?(.success(cache.results))
+                completion?(.success(cache.results.compactMap()))
             }
             return
         }
@@ -47,7 +47,7 @@ extension UserInteractor: UserInteractorPresenterInterface {
             switch response.result {
             case .success(let value):
                 self.cache = value
-                completion?(.success(value.results))
+                completion?(.success(value.results.compactMap()))
             case .failure(let error):
                 completion?(.failure(error))
             }
@@ -66,7 +66,7 @@ extension UserInteractor: UserInteractorPresenterInterface {
 
 private struct RandomUserResponse: Decodable {
 
-    let results: [UserEntity]
+    let results: [UserEntity?]
 
     // let info: Info
 
