@@ -27,7 +27,7 @@ extension MainPresenter: MainPresenterInteractorInterface {
 extension MainPresenter: MainPresenterViewInterface {
 
     func start() {
-
+        router.setRoot()
     }
 
 }

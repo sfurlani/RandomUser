@@ -22,16 +22,28 @@ extension UserPresenter: UserPresenterRouterInterface {
 
 extension UserPresenter: UserPresenterInteractorInterface {
 
+    func handleLoadUsers(result: Result<[UserEntity], Error>) {
+        switch result {
+        case .success(let users):
+            view.show(users: users)
+        case .failure(let error):
+            view.show(error: error)
+        }
+
+    }
+
 }
 
 extension UserPresenter: UserPresenterViewInterface {
 
     func start() {
-        // TODO
+        view.showLoading()
+        interactor.loadUsers()
     }
 
-    func showDetail(user: Any) {
-        // TODO
+    func showDetail(user: UserEntity) {
+        view.deselectAll()
+        router.showDetail(user: user)
     }
 
 }

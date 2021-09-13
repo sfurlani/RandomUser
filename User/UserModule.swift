@@ -7,11 +7,13 @@
 import Foundation
 import UIKit
 import VIPER
+import Alamofire
 
 // MARK: - router
 
 protocol UserRouterPresenterInterface: RouterPresenterInterface {
 
+    func showDetail(user: UserEntity)
 }
 
 // MARK: - presenter
@@ -22,17 +24,25 @@ protocol UserPresenterRouterInterface: PresenterRouterInterface {
 
 protocol UserPresenterInteractorInterface: PresenterInteractorInterface {
 
+    func handleLoadUsers(result: Result<[UserEntity], Error>)
+
 }
 
 protocol UserPresenterViewInterface: PresenterViewInterface {
-    func start()
 
-    func showDetail(user: Any)
+    func start()
+    func showDetail(user: UserEntity)
 }
 
 // MARK: - interactor
 
 protocol UserInteractorPresenterInterface: InteractorPresenterInterface {
+
+    // Swift 5.5 - async method which returns [User]?
+    // async func loadUsers() throws -> [User]
+    func loadUsers()
+
+    func cancel()
 
 }
 
@@ -41,7 +51,9 @@ protocol UserInteractorPresenterInterface: InteractorPresenterInterface {
 protocol UserViewPresenterInterface: ViewPresenterInterface {
 
     func showLoading()
-    func show(users: [Any])
+    func show(users: [UserEntity])
+    func show(error: Error)
+    func deselectAll()
 
 }
 

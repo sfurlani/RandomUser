@@ -18,4 +18,13 @@ final class UserRouter: RouterInterface {
 
 extension UserRouter: UserRouterPresenterInterface {
 
+    func showDetail(user: UserEntity) {
+        let detail = UserDetailModule().build(for: user)
+        if let nav = viewController?.navigationController {
+            nav.pushViewController(detail, animated: true)
+        } else {
+            viewController?.present(detail, animated: true)
+        }
+    }
+
 }

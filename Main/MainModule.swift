@@ -12,6 +12,8 @@ import VIPER
 
 protocol MainRouterPresenterInterface: RouterPresenterInterface {
 
+    func setRoot()
+
 }
 
 // MARK: - presenter

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import VIPER
 
-final class MainView: UIViewController, ViewInterface {
+final class MainView: UINavigationController, ViewInterface {
 
     var presenter: MainPresenterViewInterface!
 

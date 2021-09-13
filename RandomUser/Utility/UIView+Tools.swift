@@ -15,7 +15,6 @@ extension UIView {
      (Updated for iOS 9.0 - replaces old NSLayoutConstraint code)
      */
     func anchorTo(other: UIView, edgeInsets: NSDirectionalEdgeInsets = .zero) {
-        assert(superview != nil)
         translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate(
@@ -26,15 +25,34 @@ extension UIView {
     }
 
     /**
+     Sets [top, leading, trailing, bottom] Anchors of this view to the superView
+     (Updated for iOS 9.0 - replaces old NSLayoutConstraint code)
+     */
+    func anchorToSuperview(edgeInsets: NSDirectionalEdgeInsets = .zero) {
+        assert(superview != nil)
+        anchorTo(other: superview!, edgeInsets: edgeInsets)
+    }
+
+    /**
      Sets [centerX, centerY] Anchors of this view to the other view (must be in the same view Heirarchy)
      (Updated for iOS 9.0 - replaces old NSLayoutConstraint code)
      */
     func centerTo(other: UIView, offset: CGPoint = .zero) {
-        assert(superview != nil)
         translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate(
             [centerXAnchor.constraint(equalTo: other.centerXAnchor, constant: offset.x),
              centerYAnchor.constraint(equalTo: other.centerYAnchor, constant: offset.y)])
     }
+
+    /**
+     Sets [centerX, centerY] Anchors of this view to the superView
+     (Updated for iOS 9.0 - replaces old NSLayoutConstraint code)
+     */
+    func centerToSuperview(offset: CGPoint = .zero) {
+        assert(superview != nil)
+        centerTo(other: superview!, offset: offset)
+    }
+
+
 }
