@@ -9,7 +9,13 @@ import Foundation
 import UIKit
 import VIPER
 
-final class UserDetailPresenter: PresenterInterface {
+final class UserDetailPresenter: PresenterInterface, PresenterAlertable {
+
+    /// Not sure why this wasn't pulling from the protocols and extensions I set up ut it's like 4am and im gonna do this later?
+    func simpleAlert(title: String, message: String) {
+        router.simpleAlert(title: title, message: message)
+    }
+
 
     var router: UserDetailRouterPresenterInterface!
     var interactor: UserDetailInteractorPresenterInterface!
@@ -19,6 +25,9 @@ final class UserDetailPresenter: PresenterInterface {
 
 extension UserDetailPresenter: UserDetailPresenterRouterInterface {
 
+    func finishedEmail(result: UserDetailRouter.EmailResult) {
+        view.show(result: result)
+    }
 }
 
 extension UserDetailPresenter: UserDetailPresenterInteractorInterface {
@@ -35,6 +44,6 @@ extension UserDetailPresenter: UserDetailPresenterViewInterface {
     }
 
     func openEmail() {
-        // TODO
+        router.openEmail(email: interactor.user.email)
     }
 }

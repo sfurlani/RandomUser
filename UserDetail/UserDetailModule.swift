@@ -10,21 +10,21 @@ import VIPER
 
 // MARK: - router
 
-protocol UserDetailRouterPresenterInterface: RouterPresenterInterface {
-
+protocol UserDetailRouterPresenterInterface: RouterPresenterInterface, RouterAlertable {
+    func openEmail(email: String)
 }
 
 // MARK: - presenter
 
 protocol UserDetailPresenterRouterInterface: PresenterRouterInterface {
-
+    func finishedEmail(result: UserDetailRouter.EmailResult)
 }
 
 protocol UserDetailPresenterInteractorInterface: PresenterInteractorInterface {
     func fetched(state: UserDetailInteractor.ImageState)
 }
 
-protocol UserDetailPresenterViewInterface: PresenterViewInterface {
+protocol UserDetailPresenterViewInterface: PresenterViewInterface, PresenterAlertable {
     func start()
     func openEmail()
 }
@@ -41,6 +41,7 @@ protocol UserDetailInteractorPresenterInterface: InteractorPresenterInterface {
 protocol UserDetailViewPresenterInterface: ViewPresenterInterface {
     func show(state: UserDetailInteractor.ImageState)
     func show(user: UserEntity)
+    func show(result: UserDetailRouter.EmailResult)
 }
 
 

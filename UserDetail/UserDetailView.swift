@@ -21,6 +21,8 @@ final class UserDetailView: UIViewController, ViewInterface, UIStoryboardIdentif
             profilePicture.layer.masksToBounds = true
             profilePicture.layer.cornerRadius = 16
             profilePicture.layer.cornerCurve = .continuous
+            profilePicture.layer.borderWidth = 1.0
+            profilePicture.layer.borderColor = UIColor.systemBlue.cgColor
         }
     }
     @IBOutlet weak var profileIndicator: UIActivityIndicatorView!
@@ -34,7 +36,7 @@ final class UserDetailView: UIViewController, ViewInterface, UIStoryboardIdentif
     }
 
     @IBAction func didTapEmail(_ sender: Any) {
-
+        presenter.openEmail()
     }
 
 }
@@ -48,6 +50,7 @@ extension UserDetailView: UserDetailViewPresenterInterface {
             profileIndicator.startAnimating()
         case .error(let error):
             // TODO
+            print(error)
             profilePicture.backgroundColor = .systemRed
             profilePicture.image = nil
             profileIndicator.stopAnimating()
@@ -65,5 +68,18 @@ extension UserDetailView: UserDetailViewPresenterInterface {
         let fmt = NSLocalizedString("email: %@", comment: "Email Button Prompt")
         let email = String(format: fmt, user.email)
         emailButton.setTitle(email, for: .normal)
+    }
+
+    func show(result: UserDetailRouter.EmailResult) {
+        switch result {
+        case .ok:
+            // assuming the user is in control of the result (sent, cancelled, or saved)
+            break
+        case .unableToSend:
+            presenter.simpleAlert(title: "Unable to Email", message: "Your device is not configured to send emails at this time.")
+        case .error(let error):
+            // TODO:
+            print(error)
+        }
     }
 }

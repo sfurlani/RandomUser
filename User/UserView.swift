@@ -37,6 +37,7 @@ final class UserView: UIViewController, ViewInterface {
 
     private func setupView() {
         view.backgroundColor = .systemBackground
+        navigationItem.backButtonTitle = ""
     }
 
     private func setupUserList() {
@@ -186,7 +187,7 @@ class UserRow: UITableViewCell {
                 return
             }
 
-            nameLabel.text = config.user.name.full
+            nameLabel.text = config.user.name.first
             nameLabel.textColor = config.isSelected ? .red : .black
         }
     }

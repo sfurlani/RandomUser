@@ -34,6 +34,7 @@
 		D9DFBC6426EF2E3300636B3D /* UserDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFBC5F26EF2E3200636B3D /* UserDetailInteractor.swift */; };
 		D9DFBC6726EF31ED00636B3D /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = D9DFBC6626EF31ED00636B3D /* AlamofireImage */; };
 		D9DFBC6926EF341D00636B3D /* UIStoryboard+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFBC6826EF341D00636B3D /* UIStoryboard+Tools.swift */; };
+		D9DFBC6B26EF3CA500636B3D /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFBC6A26EF3CA500636B3D /* Alertable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		D9DFBC5E26EF2E3200636B3D /* UserDetailModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailModule.swift; sourceTree = "<group>"; };
 		D9DFBC5F26EF2E3200636B3D /* UserDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailInteractor.swift; sourceTree = "<group>"; };
 		D9DFBC6826EF341D00636B3D /* UIStoryboard+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Tools.swift"; sourceTree = "<group>"; };
+		D9DFBC6A26EF3CA500636B3D /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				D9DFBC5026EEFD3300636B3D /* UIView+Tools.swift */,
 				D9DFBC5226EEFF5B00636B3D /* Optional+Collection.swift */,
 				D9DFBC6826EF341D00636B3D /* UIStoryboard+Tools.swift */,
+				D9DFBC6A26EF3CA500636B3D /* Alertable.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				D9DFBC6026EF2E3300636B3D /* UserDetailRouter.swift in Sources */,
 				D9DFBC6226EF2E3300636B3D /* UserDetailPresenter.swift in Sources */,
 				D96A715526EEEF6500E4FB29 /* AppDelegate.swift in Sources */,
+				D9DFBC6B26EF3CA500636B3D /* Alertable.swift in Sources */,
 				D9DFBC3B26EEF17D00636B3D /* UserModule.swift in Sources */,
 				D9DFBC4926EEF2CD00636B3D /* MainPresenter.swift in Sources */,
 				D9DFBC4826EEF2CD00636B3D /* MainInteractor.swift in Sources */,

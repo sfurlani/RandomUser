@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import VIPER
 
-
-struct UserEntity: Decodable {
+struct UserEntity: Decodable, EntityInterface {
 
     let name: Name
     let email: String
