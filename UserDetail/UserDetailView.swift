@@ -31,6 +31,7 @@ final class UserDetailView: UIViewController, ViewInterface, UIStoryboardIdentif
         super.viewDidLoad()
 
         title = "User"
+        navigationItem.largeTitleDisplayMode = .never
 
         self.presenter.start()
     }

@@ -21,12 +21,10 @@ final class UserView: UIViewController, ViewInterface {
 
     private let indicator = UIActivityIndicatorView(style: .large)
 
-    private var configs: [UserRow.Configuration]?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Users"
+        title = "Random Users"
 
         setupView()
         setupUserList()
@@ -79,8 +77,6 @@ extension UserView: UserViewPresenterInterface {
         userList.isHidden = false
 
         let configs = users.map(UserRow.Configuration.init(user:))
-        self.configs = configs
-
         var snapshot = UserListSnapshot()
         snapshot.appendSections([1])
         snapshot.appendItems(configs, toSection: 1)
@@ -106,7 +102,7 @@ extension UserView: UserViewPresenterInterface {
 extension UserView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let config = configs?[indexPath.row] else {
+        guard let config = dataSource.itemIdentifier(for: indexPath) else {
             return
         }
         presenter.showDetail(user: config.user)
@@ -176,14 +172,14 @@ class UserRow: UITableViewCell {
             nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         }
 
-        // unused by this API
+        // unused by the configuration API (but might be later by the restoration API if we set it up)
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
 
         func configure(_ configuration: UIContentConfiguration) {
             guard let config = configuration as? Configuration else {
-                assertionFailure("Applied Wrong Configuration")
+                assertionFailure("Applied Wrong Configuration: \(configuration) - expected: \(Configuration.self)")
                 return
             }
 

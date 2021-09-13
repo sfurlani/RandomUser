@@ -17,6 +17,8 @@ final class MainView: UINavigationController, ViewInterface {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationBar.prefersLargeTitles = true
+
         self.presenter.start()
     }
 
